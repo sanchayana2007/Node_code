@@ -22,18 +22,19 @@ app.configure(function(){
 // App configure having Two seperate Enviroment 
 // Use : $ NODE_ENV=production node app
 
-app.configure('development', function(){
-	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
 
+app.configure('development', function(){
+app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
 app.configure('production', function(){
-	app.use(express.errorHandler());
+app.use(express.errorHandler());
 });
 // Routes
-app.get('/', routes.index);
-require('./routes/users')(app);
+//app.get('/', routes.index);
+require('./routes/index')(app);
+require('./routes/user')(app);
 
 app.listen(3000, function(){
-	console.log("Express server listening on port %d in %s mode", app.address().port,
-	app.settings.env);
+console.log("Express server listening on port %d in %s mode", app.port,
+app.settings.env);
 });

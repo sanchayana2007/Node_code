@@ -1,0 +1,8 @@
+// The user name is taken from the render(get('/users/:name') user: user
+// as the user is a JSON object
+h1= user.name
+h2 Bio
+p= user.bio
+form(action="/users/" + encodeURIComponent(user.username), method="POST")
+input(name="_method", type="hidden", value="DELETE")
+input(type="submit", value="Delete")
